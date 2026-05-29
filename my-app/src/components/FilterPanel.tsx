@@ -48,7 +48,7 @@ export default function FilterPanel({ open, selected, onClose, onApply }: Props)
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-40 bg-primary-dark/40 backdrop-blur-sm"
+            className="fixed inset-0 z-[1900] bg-primary-dark/40 backdrop-blur-sm"
           />
 
           {/* Panel */}
@@ -58,7 +58,7 @@ export default function FilterPanel({ open, selected, onClose, onApply }: Props)
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', stiffness: 340, damping: 30 }}
-            className="fixed inset-x-0 bottom-0 z-50 mx-auto max-w-2xl rounded-t-3xl bg-surface pb-[env(safe-area-inset-bottom)] shadow-card-hover"
+            className="fixed inset-x-0 bottom-0 z-[2000] mx-auto max-w-2xl rounded-t-3xl bg-surface pb-[env(safe-area-inset-bottom)] shadow-card-hover"
           >
             {/* Handle */}
             <div className="flex justify-center pt-3">

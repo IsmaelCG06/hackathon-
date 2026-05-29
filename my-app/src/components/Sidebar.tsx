@@ -51,7 +51,7 @@ export default function Sidebar({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+            className="fixed inset-0 z-[1900] bg-black/50 backdrop-blur-sm"
           />
 
           <motion.aside
@@ -60,7 +60,7 @@ export default function Sidebar({
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'spring', stiffness: 320, damping: 32 }}
-            className="fixed inset-y-0 left-0 z-50 flex w-[82%] max-w-xs flex-col bg-primary-dark pt-[env(safe-area-inset-top)] text-white shadow-2xl"
+            className="fixed inset-y-0 left-0 z-[2000] flex w-[82%] max-w-xs flex-col bg-primary-dark pt-[env(safe-area-inset-top)] text-white shadow-2xl"
           >
             {/* Logo + cerrar */}
             <div className="flex items-center justify-between px-5 pb-2 pt-5">
