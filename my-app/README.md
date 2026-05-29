@@ -1,16 +1,54 @@
-# React + Vite
+# Conéctate Cartagena
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+App móvil-first que conecta a jóvenes de Cartagena con convocatorias, mesas de participación, empleo y formación. Diseño ultra moderno con paleta azul/verde, microinteracciones y enfoque en FOMO y claridad.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript**
+- **Vite** (bundler/dev server)
+- **Tailwind CSS** (paleta personalizada azul/verde)
+- **Lucide React** (íconos)
+- **Framer Motion** (animaciones y microinteracciones)
 
-## React Compiler
+## Scripts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install     # instalar dependencias
+npm run dev     # servidor de desarrollo
+npm run build   # type-check + build de producción
+npm run lint    # eslint
+npm run preview # previsualizar el build
+```
 
-## Expanding the ESLint configuration
+## Estructura
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+├── App.tsx                  # orquesta estado de filtros y búsqueda
+├── types.ts                 # interfaces (Opportunity, Kpi, etc.)
+├── data/opportunities.ts    # mock data (oportunidades + KPIs)
+└── components/
+    ├── Header.tsx           # logo + chip de ubicación
+    ├── FilterPills.tsx      # barra de filtros scrolleable
+    ├── SearchBar.tsx        # búsqueda + botón de filtros
+    ├── UrgencyBanner.tsx    # banner de urgencia con brillo
+    ├── KPISection.tsx       # KPIs con conteo animado al hacer scroll
+    ├── FeedSection.tsx      # feed "Oportunidades para ti"
+    ├── OpportunityCard.tsx  # tarjeta de oportunidad
+    └── BottomNav.tsx        # navegación inferior
+```
+
+## Paleta (Tailwind)
+
+| Token        | Color                  | Uso                       |
+| ------------ | ---------------------- | ------------------------- |
+| `bg-body`    | `#f0f7f7`              | Fondo general             |
+| `primary`    | `#0ea5e9`              | CTAs, acentos, hover      |
+| `primary-dark` | `#0369a1`            | Headers, títulos          |
+| `secondary`  | `#10b981`              | Éxito / empleo            |
+| `accent`     | `#06b6d4`              | Badges, interacciones     |
+| `tag-blue`   | `#dbeafe` / `#1d4ed8`  | Convocatorias             |
+| `tag-green`  | `#d1fae5` / `#047857`  | Empleo / Formación        |
+| `tag-purple` | `#ede9fe` / `#6d28d9`  | Mesas                     |
+| `tag-urgency`| `#fef2f2` / `#dc2626`  | Urgencias                 |
+```
