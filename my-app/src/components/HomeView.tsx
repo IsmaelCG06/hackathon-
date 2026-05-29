@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import type { Category, FilterKey, Opportunity } from '../types'
-import { kpis, opportunities } from '../data/opportunities'
+import { kpis } from '../data/opportunities'
+import { useOpportunities } from '../data/OpportunitiesContext'
 import FilterPills from './FilterPills'
 import SearchBar from './SearchBar'
 import UrgencyBanner from './UrgencyBanner'
@@ -21,6 +22,7 @@ interface Props {
 }
 
 export default function HomeView({ onSelectOpportunity, onOpenFilters, categoryFilter }: Props) {
+  const { opportunities } = useOpportunities()
   const [filter, setFilter] = useState<FilterKey>('Todas')
   const [query, setQuery] = useState('')
 
@@ -40,7 +42,7 @@ export default function HomeView({ onSelectOpportunity, onOpenFilters, categoryF
         o.location.toLowerCase().includes(q)
       return matchesPill && matchesPanel && matchesQuery
     })
-  }, [filter, query, categoryFilter])
+  }, [filter, query, categoryFilter, opportunities])
 
   return (
     <main className="mx-auto flex max-w-2xl flex-col gap-5 px-4 pb-28 pt-4">

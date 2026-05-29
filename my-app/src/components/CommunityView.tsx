@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Users } from 'lucide-react'
 import type { Opportunity } from '../types'
-import { opportunities } from '../data/opportunities'
+import { useOpportunities } from '../data/OpportunitiesContext'
 import OpportunityCard from './OpportunityCard'
 
 interface Props {
@@ -9,6 +9,7 @@ interface Props {
 }
 
 export default function CommunityView({ onSelectOpportunity }: Props) {
+  const { opportunities } = useOpportunities()
   const mesas = opportunities.filter((o) => o.category === 'Mesa')
 
   return (

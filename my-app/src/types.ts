@@ -29,6 +29,8 @@ export interface Kpi {
   label: string
 }
 
+export type UserType = 'youth' | 'organization'
+
 export interface User {
   id: string
   username: string
@@ -37,4 +39,6 @@ export interface User {
   role: string
   /** Inicial mostrada en el avatar */
   initial: string
+  /** Tipo de cuenta: joven participante u organización */
+  type: UserType
 }

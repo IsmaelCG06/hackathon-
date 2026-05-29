@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Locate, Navigation, X, Building2, CalendarDays } from 'lucide-react'
 import type { Opportunity } from '../types'
-import { opportunities } from '../data/opportunities'
+import { useOpportunities } from '../data/OpportunitiesContext'
 import { formatDistance, formatDuration, getRoute } from '../lib/ors'
 
 // Cartagena centro
@@ -78,6 +78,7 @@ export default function MapView({
   routeTarget: Opportunity | null
   onClearRoute: () => void
 }) {
+  const { opportunities } = useOpportunities()
   const [userPos, setUserPos] = useState<[number, number] | null>(null)
   const [route, setRoute] = useState<RouteInfo | null>(null)
   const [loadingRoute, setLoadingRoute] = useState(false)

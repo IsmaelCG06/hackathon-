@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Building2, IdCard, LogOut, Mail, ShieldCheck } from 'lucide-react'
 import type { User } from '../types'
+import ProfileBio from './ProfileBio'
 
 interface Props {
   user: User
@@ -60,6 +61,8 @@ export default function ProfileView({ user, onLogout }: Props) {
           </motion.div>
         ))}
       </section>
+
+      <ProfileBio user={user} />
 
       <button
         type="button"

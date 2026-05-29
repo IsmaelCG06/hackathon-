@@ -15,6 +15,17 @@ const USERS: StoredUser[] = [
     organization: 'Conéctate Cartagena',
     role: 'Joven Participante',
     initial: 'U',
+    type: 'youth',
+  },
+  {
+    id: '2',
+    username: 'empresa2',
+    password: 'password2',
+    name: 'Fundación Mi Sangre',
+    organization: 'Fundación Mi Sangre',
+    role: 'Organización',
+    initial: 'E',
+    type: 'organization',
   },
 ]
 

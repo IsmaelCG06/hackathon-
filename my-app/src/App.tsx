@@ -10,14 +10,14 @@ import OpportunityDetail from './components/OpportunityDetail'
 import FilterPanel from './components/FilterPanel'
 import Sidebar from './components/Sidebar'
 import LoginScreen from './components/LoginScreen'
+import CreateEventView from './components/CreateEventView'
 import { useAuth } from './auth/AuthContext'
+import { useOpportunities } from './data/OpportunitiesContext'
 import type { Category, Opportunity } from './types'
-import { opportunities } from './data/opportunities'
-
-const alertCount = opportunities.filter((o) => o.urgent || o.badge === 'Nuevo').length
 
 function App() {
   const { user, logout } = useAuth()
+  const { opportunities } = useOpportunities()
   const [tab, setTab] = useState('home')
   const [showSidebar, setShowSidebar] = useState(false)
   const [selectedOpportunity, setSelectedOpportunity] = useState<Opportunity | null>(null)
@@ -28,6 +28,9 @@ function App() {
   if (!user) {
     return <LoginScreen />
   }
+
+  const isOrganization = user.type === 'organization'
+  const alertCount = opportunities.filter((o) => o.urgent || o.badge === 'Nuevo').length
 
   function handleSelectOpportunity(opp: Opportunity) {
     setSelectedOpportunity(opp)
@@ -47,6 +50,7 @@ function App() {
         user={user}
         activeTab={tab}
         alertCount={alertCount}
+        canCreate={isOrganization}
         onClose={() => setShowSidebar(false)}
         onChangeTab={setTab}
         onLogout={logout}
@@ -77,6 +81,10 @@ function App() {
       )}
 
       {tab === 'profile' && <ProfileView user={user} onLogout={logout} />}
+
+      {tab === 'create' && isOrganization && (
+        <CreateEventView organization={user.organization} onPublished={() => setTab('home')} />
+      )}
 
       <BottomNav active={tab} onChange={setTab} alertCount={alertCount} />
 

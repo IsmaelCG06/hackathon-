@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Bell, Home, LogOut, MapPin, User as UserIcon, Users, X } from 'lucide-react'
+import { Bell, Home, LogOut, MapPin, PlusCircle, User as UserIcon, Users, X } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import type { User } from '../types'
 
-const NAV_ITEMS: { id: string; label: string; icon: LucideIcon }[] = [
+const BASE_ITEMS: { id: string; label: string; icon: LucideIcon }[] = [
   { id: 'home', label: 'Inicio', icon: Home },
   { id: 'map', label: 'Mapa', icon: MapPin },
   { id: 'community', label: 'Comunidad', icon: Users },
@@ -11,11 +11,14 @@ const NAV_ITEMS: { id: string; label: string; icon: LucideIcon }[] = [
   { id: 'profile', label: 'Mi perfil', icon: UserIcon },
 ]
 
+const CREATE_ITEM = { id: 'create', label: 'Crear evento', icon: PlusCircle }
+
 interface Props {
   open: boolean
   user: User
   activeTab: string
   alertCount?: number
+  canCreate?: boolean
   onClose: () => void
   onChangeTab: (id: string) => void
   onLogout: () => void
@@ -26,10 +29,13 @@ export default function Sidebar({
   user,
   activeTab,
   alertCount = 0,
+  canCreate = false,
   onClose,
   onChangeTab,
   onLogout,
 }: Props) {
+  const navItems = canCreate ? [...BASE_ITEMS, CREATE_ITEM] : BASE_ITEMS
+
   function handleNav(id: string) {
     onChangeTab(id)
     onClose()
@@ -102,7 +108,7 @@ export default function Sidebar({
                 Navegación
               </p>
               <div className="flex flex-col gap-1">
-                {NAV_ITEMS.map(({ id, label, icon: Icon }) => {
+                {navItems.map(({ id, label, icon: Icon }) => {
                   const isActive = id === activeTab
                   const showBadge = id === 'alerts' && alertCount > 0
                   return (

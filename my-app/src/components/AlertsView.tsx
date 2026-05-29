@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { AlertTriangle, Bell, Sparkles } from 'lucide-react'
 import type { Opportunity } from '../types'
-import { opportunities } from '../data/opportunities'
+import { useOpportunities } from '../data/OpportunitiesContext'
 import OpportunityCard from './OpportunityCard'
 
 interface Props {
@@ -9,6 +9,7 @@ interface Props {
 }
 
 export default function AlertsView({ onSelectOpportunity }: Props) {
+  const { opportunities } = useOpportunities()
   const urgent = opportunities.filter((o) => o.urgent)
   const newItems = opportunities.filter((o) => !o.urgent && o.badge === 'Nuevo')
   const closingSoon = opportunities.filter(
