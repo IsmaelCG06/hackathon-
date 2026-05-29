@@ -17,7 +17,7 @@ interface Props {
 
 export default function BottomNav({ active, onChange, alertCount = 0 }: Props) {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-slate-100 bg-surface/90 pb-[env(safe-area-inset-bottom)] backdrop-blur">
+    <nav className="fixed inset-x-0 bottom-0 z-[1100] border-t border-slate-100 bg-surface/90 pb-[env(safe-area-inset-bottom)] backdrop-blur">
       <div className="mx-auto flex max-w-2xl items-stretch justify-around px-2 py-2">
         {ITEMS.map(({ id, label, icon: Icon }) => {
           const isActive = id === active
