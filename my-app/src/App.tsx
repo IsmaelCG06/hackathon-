@@ -5,19 +5,29 @@ import HomeView from './components/HomeView'
 import MapView from './components/MapView'
 import CommunityView from './components/CommunityView'
 import AlertsView from './components/AlertsView'
+import ProfileView from './components/ProfileView'
 import OpportunityDetail from './components/OpportunityDetail'
 import FilterPanel from './components/FilterPanel'
+import Sidebar from './components/Sidebar'
+import LoginScreen from './components/LoginScreen'
+import { useAuth } from './auth/AuthContext'
 import type { Category, Opportunity } from './types'
 import { opportunities } from './data/opportunities'
 
 const alertCount = opportunities.filter((o) => o.urgent || o.badge === 'Nuevo').length
 
 function App() {
+  const { user, logout } = useAuth()
   const [tab, setTab] = useState('home')
+  const [showSidebar, setShowSidebar] = useState(false)
   const [selectedOpportunity, setSelectedOpportunity] = useState<Opportunity | null>(null)
   const [showFilters, setShowFilters] = useState(false)
   const [categoryFilter, setCategoryFilter] = useState<Category[]>([])
   const [routeTarget, setRouteTarget] = useState<Opportunity | null>(null)
+
+  if (!user) {
+    return <LoginScreen />
+  }
 
   function handleSelectOpportunity(opp: Opportunity) {
     setSelectedOpportunity(opp)
@@ -30,7 +40,17 @@ function App() {
 
   return (
     <div className="min-h-dvh">
-      <Header />
+      <Header onOpenSidebar={() => setShowSidebar(true)} />
+
+      <Sidebar
+        open={showSidebar}
+        user={user}
+        activeTab={tab}
+        alertCount={alertCount}
+        onClose={() => setShowSidebar(false)}
+        onChangeTab={setTab}
+        onLogout={logout}
+      />
 
       {tab === 'home' && (
         <HomeView
@@ -55,6 +75,8 @@ function App() {
       {tab === 'alerts' && (
         <AlertsView onSelectOpportunity={handleSelectOpportunity} />
       )}
+
+      {tab === 'profile' && <ProfileView user={user} onLogout={logout} />}
 
       <BottomNav active={tab} onChange={setTab} alertCount={alertCount} />
 

@@ -16,6 +16,8 @@ export interface Opportunity {
   description?: string
   /** Texto del CTA, ej. "Postularme" */
   cta: string
+  /** URL externa de postulación / más información */
+  url?: string
   /** Badge de urgencia opcional, ej. "Cierra en 5 días" o "Nuevo" */
   badge?: string
   /** Marca urgencia crítica para resaltar el badge en rojo */
@@ -25,4 +27,14 @@ export interface Opportunity {
 export interface Kpi {
   value: number
   label: string
+}
+
+export interface User {
+  id: string
+  username: string
+  name: string
+  organization: string
+  role: string
+  /** Inicial mostrada en el avatar */
+  initial: string
 }

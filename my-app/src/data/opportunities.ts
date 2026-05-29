@@ -12,6 +12,7 @@ export const opportunities: Opportunity[] = [
     description:
       'Convocatoria para financiar proyectos de innovación social dirigidos a jóvenes de Cartagena. Hasta $5M COP por proyecto. Incluye mentoría y acompañamiento técnico del SENA.',
     cta: 'Postularme',
+    url: 'https://www.sena.edu.co/es-co/Empresarios/Paginas/convocatorias.aspx',
     badge: 'Cierra en 1 día',
     urgent: true,
   },
@@ -26,6 +27,7 @@ export const opportunities: Opportunity[] = [
     description:
       'Programa integral de empleabilidad para jóvenes entre 18 y 28 años. Incluye talleres de habilidades blandas, orientación vocacional y vinculación laboral con empresas aliadas en Cartagena.',
     cta: 'Postularme',
+    url: 'https://www.fundacionmisangre.org',
     badge: 'Nuevo',
   },
   {
@@ -39,6 +41,7 @@ export const opportunities: Opportunity[] = [
     description:
       'Espacio de encuentro y deliberación para jóvenes del Centro Histórico. Se discuten propuestas de política pública local, presupuesto participativo y proyectos barriales.',
     cta: 'Cómo unirme',
+    url: 'https://www.instagram.com/colectivo_traso',
   },
   {
     id: 'liderazgo-comunitario-utb',
@@ -51,6 +54,7 @@ export const opportunities: Opportunity[] = [
     description:
       'Módulo 3 del diplomado en Liderazgo Comunitario de la UTB. Cubre gestión de proyectos sociales, comunicación asertiva y herramientas de incidencia política. Cubre matrícula.',
     cta: 'Inscribirme',
+    url: 'https://www.utb.edu.co/extension/',
     badge: 'Cierra en 5 días',
   },
   {
@@ -64,6 +68,7 @@ export const opportunities: Opportunity[] = [
     description:
       'Hackathon de 48 horas para jóvenes creadores de soluciones tecnológicas a problemas de la ciudad. Premios de hasta $10M COP y posibilidad de incubación en el Hub de Innovación Distrital.',
     cta: 'Postularme',
+    url: 'https://www.cartagena.gov.co',
     badge: 'Nuevo',
   },
 ]

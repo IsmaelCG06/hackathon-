@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import {
-  ArrowRight,
   Building2,
   CalendarDays,
+  Clock,
+  ExternalLink,
   MapPin,
   Navigation,
   Share2,
@@ -136,13 +137,26 @@ export default function OpportunityDetail({ opportunity, onClose, onNavigate }: 
 
               {/* CTAs */}
               <div className="flex flex-col gap-3">
-                <button
-                  type="button"
-                  className="flex items-center justify-center gap-2 rounded-2xl bg-accent py-3.5 text-base font-bold text-white shadow-accent-glow transition-all hover:bg-amber-600 active:scale-95"
-                >
-                  {opportunity.cta}
-                  <ArrowRight className="h-5 w-5" strokeWidth={2.6} />
-                </button>
+                {opportunity.url ? (
+                  <a
+                    href={opportunity.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 rounded-2xl bg-accent py-3.5 text-base font-bold text-white shadow-accent-glow transition-all hover:bg-amber-600 active:scale-95"
+                  >
+                    {opportunity.cta}
+                    <ExternalLink className="h-5 w-5" strokeWidth={2.6} />
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    disabled
+                    className="flex cursor-not-allowed items-center justify-center gap-2 rounded-2xl bg-slate-200 py-3.5 text-base font-bold text-slate-400"
+                  >
+                    Próximamente
+                    <Clock className="h-5 w-5" strokeWidth={2.6} />
+                  </button>
+                )}
 
                 <button
                   type="button"
